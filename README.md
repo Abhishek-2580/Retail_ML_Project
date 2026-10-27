@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # RetailPulse: Customer Analytics & Demand Forecasting
 
 Analysis of 641,798 retail sales (Jan 2021 - Oct 2025, 5,000 customers, 200 products, 50 stores
@@ -46,3 +47,6 @@ docker run -p 8501:8501 retailpulse
 ## Future work
 Drift monitoring, CI/CD, Kubernetes deployment, LSTM or gradient-boosting forecasts with promotion data,
 and richer customer data (returns, complaints, app activity) for churn.
+=======
+# Retail_ML_Project
+>>>>>>> 5db99ff041beabe9725eccd93df5c85def8ae590
