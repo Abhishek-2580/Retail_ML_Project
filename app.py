@@ -23,26 +23,179 @@ TIER_COLORS = {"Platinum": INDIGO, "Gold": AMBER, "Silver": "#94A3B8"}
 
 st.markdown("""
 <style>
-#MainMenu, footer {visibility: hidden;}
-.block-container {padding-top: 1.4rem; padding-bottom: 2rem; max-width: 1400px;}
-[data-testid="stSidebar"] {background: #0F172A;}
-[data-testid="stSidebar"] * {color: #E2E8F0 !important;}
-div[data-testid="stMetric"] {background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 12px;
-    padding: 14px 18px; box-shadow: 0 1px 3px rgba(16,24,40,.06);}
-div[data-testid="stMetricLabel"] p {font-size: .74rem; color: #64748B; text-transform: uppercase;
-    letter-spacing: .05em; font-weight: 600;}
-div[data-testid="stMetricValue"] {font-size: 1.65rem; font-weight: 700; color: #0F172A;}
-.hero {background: linear-gradient(120deg, #4F46E5 0%, #7C3AED 100%); border-radius: 14px;
-    padding: 20px 26px; margin-bottom: 18px;}
-.hero h1 {color: #fff; margin: 0; font-size: 1.7rem; font-weight: 700; padding: 0;}
-.hero p {color: #E0E7FF; margin: 4px 0 0 0; font-size: .95rem;}
-.callout {border-left: 4px solid #4F46E5; background: #EEF2FF; padding: 12px 16px;
-    border-radius: 8px; color: #1E1B4B; font-size: .92rem; margin: 10px 0 4px 0;}
-.callout.warn {border-left-color: #F59E0B; background: #FFFBEB; color: #78350F;}
-span[data-baseweb="tag"] {background-color: #4F46E5 !important;}
-div[role="slider"] {background-color: #4F46E5 !important;}
-button[kind="primary"], .stDownloadButton button {border-radius: 8px;}
-.stTabs [data-baseweb="tab"] {font-weight: 600;}
+/* Main page spacing */
+.block-container {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    padding-left: clamp(1rem, 3vw, 2.5rem);
+    padding-right: clamp(1rem, 3vw, 2.5rem);
+    max-width: 100%;
+}
+
+/* Hide Streamlit menu and footer */
+#MainMenu, footer {
+    visibility: hidden;
+}
+
+/* Sidebar */
+[data-testid="stSidebar"] {
+    background: #0F172A;
+}
+
+[data-testid="stSidebar"] * {
+    color: #E2E8F0;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label {
+    border-radius: 8px;
+    padding: 0.35rem 0.55rem;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:hover {
+    background: rgba(148, 163, 184, 0.14);
+}
+
+/* Responsive headings and text */
+h1, h2, h3, h4 {
+    overflow-wrap: break-word;
+    word-break: normal;
+    line-height: 1.4;
+}
+.stMarkdown p, [data-testid="stCaptionContainer"] p {
+    line-height: 1.55;
+}
+
+/* Metric cards */
+div[data-testid="stMetric"] {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 14px;
+    min-width: 0;
+    height: auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.06);
+}
+
+/* Metric labels */
+div[data-testid="stMetricLabel"] {
+    min-width: 0;
+}
+
+div[data-testid="stMetricLabel"] p {
+    font-size: clamp(0.65rem, 1vw, 0.78rem);
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-weight: 600;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.4;
+}
+
+/* Metric values */
+div[data-testid="stMetricValue"] {
+    min-width: 0;
+    font-size: clamp(1rem, 2vw, 1.65rem);
+    font-weight: 700;
+    color: #0F172A;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.35;
+}
+
+/* Hero banner */
+.hero {
+    background: linear-gradient(120deg, #4F46E5 0%, #7C3AED 100%);
+    border-radius: 14px;
+    padding: clamp(16px, 3vw, 26px);
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.hero h1 {
+    color: #FFFFFF;
+    margin: 0;
+    font-size: clamp(1.25rem, 3vw, 1.8rem);
+    font-weight: 700;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.hero p {
+    color: #E0E7FF;
+    margin-top: 8px;
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    line-height: 1.5;
+}
+
+/* Information callouts */
+.callout {
+    border-left: 4px solid #4F46E5;
+    background: #EEF2FF;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: #1E1B4B;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    margin: 12px 0;
+    box-sizing: border-box;
+}
+
+.callout.warn {
+    border-left-color: #F59E0B;
+    background: #FFFBEB;
+    color: #78350F;
+}
+
+/* Selectbox tags and sliders */
+span[data-baseweb="tag"] {
+    background-color: #4F46E5;
+}
+
+div[role="slider"] {
+    background-color: #4F46E5;
+}
+
+/* Buttons */
+button[kind="primary"],
+.stDownloadButton button {
+    border-radius: 8px;
+    white-space: normal;
+    height: auto;
+    min-height: 2.5rem;
+}
+
+/* Tabs */
+.stTabs [data-baseweb="tab"] {
+    font-weight: 600;
+    white-space: normal;
+}
+
+/* Prevent flex/grid children from forcing overflow */
+[data-testid="stHorizontalBlock"] > div,
+[data-testid="stColumn"] {
+    min-width: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .block-container {
+        padding-top: 1rem;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    div[data-testid="stMetric"] {
+        padding: 10px;
+    }
+
+    .hero {
+        padding: 16px;
+    }
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -72,15 +225,38 @@ def callout(text, warn=False):
     st.markdown(f'<div class="callout{" warn" if warn else ""}">{text}</div>', unsafe_allow_html=True)
 
 
-def style(fig, height=380, title=None):
-    fig.update_layout(template="plotly_white", colorway=COLORWAY, height=height,
-                      margin=dict(l=8, r=8, t=48, b=8),
-                      font=dict(family="Inter, Segoe UI, sans-serif", size=13, color="#334155"),
-                      legend=dict(orientation="h", y=1.12, x=0),
-                      paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-                      title=dict(text=title, font=dict(size=15, color="#0F172A")))
-    fig.update_xaxes(showgrid=False)
-    fig.update_yaxes(gridcolor="#EEF0F4")
+def style(fig, height=400, title=None):
+    """Apply a consistent, responsive layout to every Plotly chart."""
+    fig.update_layout(
+        template="plotly_white",
+        colorway=COLORWAY,
+        height=height,
+        autosize=True,
+        margin=dict(l=48, r=24, t=88, b=88),
+        font=dict(family="Inter, Segoe UI, sans-serif", size=12, color="#F4F6F9"),
+        title=dict(
+            text=title or "",
+            x=0.02,
+            xanchor="left",
+            y=0.98,
+            yanchor="top",
+            font=dict(size=17, color="#EEF1F8"),
+            pad=dict(t=8, b=12),
+        ),
+        legend=dict(
+            orientation="h",
+            yanchor="top",
+            y=-0.22,
+            xanchor="left",
+            x=0,
+            font=dict(size=11, color="#EBEEF1"),
+            bgcolor="rgba(255,255,255,0)",
+        ),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+    )
+    fig.update_xaxes(showgrid=False, automargin=True, title_standoff=12)
+    fig.update_yaxes(gridcolor="#E9EEF5", automargin=True, title_standoff=12, zeroline=False)
     return fig
 
 
@@ -103,71 +279,89 @@ st.sidebar.caption("Sales data: Jan 2021 - Oct 2025\n\nInventory snapshot: 31 Oc
 if page == "Sales overview":
     header("Sales overview", "Sales, profit and volume by channel, category and city")
     sm = load("sales_monthly.csv", ["month"])
+
     c1, c2, c3 = st.columns(3)
-    cats, chans, cities = (sorted(sm[c].unique()) for c in ["category", "channel", "city"])
+    cats, chans, cities = (sorted(sm[c].dropna().unique()) for c in ["category", "channel", "city"])
     cat = c1.multiselect("Category", cats, default=cats)
     ch = c2.multiselect("Channel", chans, default=chans)
     ci = c3.multiselect("City", cities, default=cities)
-    f = sm[sm.category.isin(cat) & sm.channel.isin(ch) & sm.city.isin(ci)]
+    f = sm[sm.category.isin(cat) & sm.channel.isin(ch) & sm.city.isin(ci)].copy()
     if f.empty:
-        st.warning("No data for this selection.")
+        st.warning("No data for this selection. Choose at least one category, channel and city.")
         st.stop()
 
     sales, profit, units = f.sales.sum(), f.profit.sum(), f.units.sum()
-    months = sorted(f["month"].unique())
+    months = sorted(f["month"].dropna().unique())
     delta = None
     if len(months) >= 24:
         cur = f[f.month.isin(months[-12:])].sales.sum()
         prev = f[f.month.isin(months[-24:-12])].sales.sum()
         if prev:
             delta = f"{(cur / prev - 1) * 100:+.1f}% vs prior 12 months"
+
     k1, k2, k3, k4 = st.columns(4)
-    k1.metric("Sales", money(sales), delta=delta)
-    k2.metric("Profit", money(profit))
+    k1.metric("Total sales", money(sales), delta=delta)
+    k2.metric("Total profit", money(profit))
     k3.metric("Profit margin", f"{profit / sales:.1%}" if sales else "n/a")
     k4.metric("Units sold", money(units))
 
     t1, t2, t3 = st.tabs(["Trend", "Seasonality", "Breakdown"])
     with t1:
-        m = f.groupby("month")[["sales", "profit"]].sum().reset_index()
+        m = f.groupby("month", as_index=False)[["sales", "profit"]].sum().sort_values("month")
         fig = go.Figure()
-        fig.add_scatter(x=m.month, y=m.sales, name="Sales", mode="lines",
-                        line=dict(color=INDIGO, width=2.5), fill="tozeroy",
-                        fillcolor="rgba(79,70,229,0.12)")
-        fig.add_scatter(x=m.month, y=m.profit, name="Profit", mode="lines",
-                        line=dict(color=TEAL, width=2.5))
-        fig.update_layout(hovermode="x unified")
-        show(style(fig, 400, "Monthly sales and profit"))
-        callout("Volume roughly halves every September and recovers in December. The pattern repeats "
-                "in every year of the data, so it is seasonality, not a data error.")
+        fig.add_scatter(
+            x=m.month, y=m.sales, name="Sales", mode="lines",
+            line=dict(color=INDIGO, width=2.5), fill="tozeroy",
+            fillcolor="rgba(79,70,229,0.10)",
+        )
+        fig.add_scatter(
+            x=m.month, y=m.profit, name="Profit", mode="lines",
+            line=dict(color=TEAL, width=2.5),
+        )
+        fig.update_layout(hovermode="x unified", legend_title_text="Measure")
+        show(style(fig, 430, "Monthly sales and profit"))
+        callout("Review the monthly pattern across years before interpreting seasonal changes. "
+                "Use the filters above to compare categories, channels and cities.")
+
     with t2:
         h = (f.assign(year=f.month.dt.year, mo=f.month.dt.month)
-              .pivot_table(index="year", columns="mo", values="units", aggfunc="sum"))
+             .pivot_table(index="year", columns="mo", values="units", aggfunc="sum"))
+        h = h.reindex(columns=range(1, 13))
         h.columns = [calendar.month_abbr[c] for c in h.columns]
-        fig = px.imshow(h, aspect="auto", color_continuous_scale="Purples", text_auto=".2s")
-        fig.update_layout(coloraxis_showscale=False)
+        fig = px.imshow(
+            h, aspect="auto", color_continuous_scale="Purples", text_auto=".2s",
+            labels=dict(x="Month", y="Year", color="Units"),
+        )
+        fig.update_layout(coloraxis_showscale=True, coloraxis_colorbar=dict(title="Units", thickness=12))
         fig.update_xaxes(side="top")
-        show(style(fig, 330, "Units sold by month and year"))
-        callout("Each row is a year. The dark band in July-August and the light September-October "
-                "block show the same drop every year.")
+        show(style(fig, 390, "Units sold by month and year"))
+        callout("Each row represents a year. Compare the same months across rows to identify recurring "
+                "seasonal patterns.")
+
     with t3:
         a, b, c = st.columns([1.3, 1, 1])
-        cd = f.groupby("category")[["sales", "profit"]].sum().sort_values("sales")
+        cd = f.groupby("category")[["sales", "profit"]].sum().sort_values("sales").reset_index()
         fig = go.Figure()
-        fig.add_bar(y=cd.index, x=cd.sales, name="Sales", orientation="h", marker_color=INDIGO)
-        fig.add_bar(y=cd.index, x=cd.profit, name="Profit", orientation="h", marker_color=TEAL)
-        fig.update_layout(barmode="group")
+        fig.add_bar(y=cd.category, x=cd.sales, name="Sales", orientation="h", marker_color=INDIGO)
+        fig.add_bar(y=cd.category, x=cd.profit, name="Profit", orientation="h", marker_color=TEAL)
+        fig.update_layout(barmode="group", bargap=0.28, bargroupgap=0.12)
         with a:
-            show(style(fig, 380, "Sales and profit by category"))
-        chd = f.groupby("channel")["sales"].sum().reset_index()
-        fig = px.pie(chd, names="channel", values="sales", hole=0.58, color_discrete_sequence=COLORWAY)
-        fig.update_traces(textinfo="percent", sort=False)
+            show(style(fig, 410, "Sales and profit by category"))
+
+        chd = f.groupby("channel", as_index=False)["sales"].sum()
+        fig = px.pie(chd, names="channel", values="sales", hole=0.58,
+                     color_discrete_sequence=COLORWAY)
+        fig.update_traces(textinfo="percent", sort=False, textposition="inside")
+        fig.update_layout(showlegend=True, legend=dict(orientation="h", y=-0.12, x=0))
         with b:
-            show(style(fig, 380, "Sales by channel"))
-        cyd = f.groupby("city")["sales"].sum().sort_values().reset_index()
-        fig = px.bar(cyd, x="sales", y="city", orientation="h", color_discrete_sequence=[INDIGO])
+            show(style(fig, 410, "Sales by channel"))
+
+        cyd = f.groupby("city", as_index=False)["sales"].sum().sort_values("sales")
+        fig = px.bar(cyd, x="sales", y="city", orientation="h",
+                     color_discrete_sequence=[INDIGO], labels={"sales": "Sales", "city": "City"})
+        fig.update_traces(hovertemplate="City: %{y}<br>Sales: %{x:,.0f}<extra></extra>")
         with c:
-            show(style(fig, 380, "Sales by city"))
+            show(style(fig, 410, "Sales by city"))
 
 # ---------------------------------------------------------------- Forecast
 elif page == "Demand forecast":
